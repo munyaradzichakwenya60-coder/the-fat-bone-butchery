@@ -178,7 +178,7 @@ function Index() {
               key={c.title}
               className="flex items-center gap-5 border border-border bg-background p-6 transition-colors hover:border-brand"
             >
-              <span className="text-4xl grayscale">{c.icon}</span>
+              <c.icon className="h-10 w-10 shrink-0 text-ink/70" strokeWidth={1} />
               <div>
                 <h3 className="font-display text-lg">{c.title}</h3>
                 <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{c.copy}</p>
