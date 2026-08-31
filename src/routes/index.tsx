@@ -189,9 +189,17 @@ function Index() {
       </section>
 
       {/* Pasture-raised promise */}
-      <section className="relative bg-cream">
-        <div className="mx-auto grid max-w-[1500px] items-center lg:grid-cols-2">
-          <div className="relative">
+      <section className="relative bg-cream py-10 lg:py-16">
+        <div className="relative mx-auto max-w-[1500px]">
+          <div className="grid gap-3 lg:grid-cols-[1fr_1.6fr]">
+            <img
+              src={cow}
+              alt="Hereford cow grazing at dusk"
+              width={1400}
+              height={900}
+              loading="lazy"
+              className="hidden h-[520px] w-full object-cover lg:block"
+            />
             <img
               src={cow}
               alt="Hereford cow standing in a dark pasture"
@@ -200,29 +208,29 @@ function Index() {
               loading="lazy"
               className="h-[380px] w-full object-cover lg:h-[520px]"
             />
-            <div className="mx-6 -mt-24 max-w-md bg-background p-10 lg:absolute lg:right-[-18%] lg:top-1/2 lg:m-0 lg:-translate-y-1/2">
-              <Eyebrow>Our Method</Eyebrow>
-              <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
-                Pasture-Raised
-                <br />
-                Promise
-              </h2>
-              <p className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
-                Animal welfare is the utmost important to us
-              </p>
-              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                Every animal we sell has spent its whole life outdoors on grass, moved between
-                paddocks by farmers we know by name. No feedlots. No routine antibiotics. Slower
-                growing, better living — and a depth of flavour you can taste in the pan.
-              </p>
-              <div className="mt-7">
-                <Btn variant="outline">Meet Our Farmers</Btn>
-              </div>
+          </div>
+          <div className="mx-6 -mt-24 max-w-md bg-background p-10 lg:absolute lg:left-[8%] lg:top-1/2 lg:m-0 lg:-translate-y-1/2">
+            <Eyebrow>Our Method</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
+              Pasture-Raised
+              <br />
+              Promise
+            </h2>
+            <p className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Animal welfare is the utmost important to us
+            </p>
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+              Every animal we sell has spent its whole life outdoors on grass, moved between
+              paddocks by farmers we know by name. No feedlots. No routine antibiotics. Slower
+              growing, better living — and a depth of flavour you can taste in the pan.
+            </p>
+            <div className="mt-7">
+              <Btn variant="outline">Meet Our Farmers</Btn>
             </div>
           </div>
-          <div className="hidden lg:block" />
         </div>
       </section>
+
 
       {/* Recommended */}
       <section className="mx-auto max-w-7xl px-6 py-24">
