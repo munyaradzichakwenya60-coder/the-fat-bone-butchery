@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, ShoppingBag, Beef, Truck, Leaf, Instagram, Facebook, Twitter } from "lucide-react";
+import { Search, ShoppingBag, Beef, Ham, Drumstick, Truck, Leaf, Instagram, Facebook, Twitter } from "lucide-react";
 
 import heroMeat from "@/assets/hero-meat.jpg";
 import cow from "@/assets/cow.jpg";
