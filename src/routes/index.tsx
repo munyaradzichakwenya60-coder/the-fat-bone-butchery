@@ -41,9 +41,10 @@ export const Route = createFileRoute("/")({
 const NAV = ["Home", "About Us", "Products", "Blog", "Pages", "Contact"];
 
 const CATEGORIES = [
-  { title: "Pork Meat", copy: "Free-range heritage pork, dry-aged and hand-cut.", icon: "🐖" },
-  { title: "Beef Steak", copy: "Grass-fed native breeds, aged a minimum of 28 days.", icon: "🐄" },
-  { title: "Poultry", copy: "Slow-grown birds raised outdoors on open pasture.", icon: "🐓" },
+  { title: "Pork Meat", copy: "Free-range heritage pork, dry-aged and hand-cut.", icon: Ham },
+  { title: "Beef Steak", copy: "Grass-fed native breeds, aged a minimum of 28 days.", icon: Beef },
+  { title: "Poultry", copy: "Slow-grown birds raised outdoors on open pasture.", icon: Drumstick },
+
 ];
 
 const PRODUCTS = [
