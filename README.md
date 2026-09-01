@@ -1,24 +1,35 @@
-# Design Perfect
+# The Fat Bone Butchery
 
-build this design as is
+> **Honest Cuts. Deep Flavor.**
+> Born from the Bone, Cut with Care.
 
-This project was built with [Lovable](https://lovable.dev).
+Official website for **The Fat Bone Butchery**, located at **129 Fort Street (between 13th & 14th Avenue), Bulawayo, Zimbabwe**.
 
-## Build with Lovable
+## Features
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/92f3654d-0f51-45a7-bdf4-952f97ca2689).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **High-Grade Meats**: Prime beef, farm-fresh chicken, ground mince, and traditional boerewors.
+- **Ordering Channels**: Local WhatsApp (`+263 712 851 525`), Phone orders, and UK Diaspora family orders (`+44 7762 068799`).
+- **Doorstep Delivery**: Chilled local delivery across Bulawayo and "Order Now, Collect Later" counter pickup.
+- **Butcher Kitchen & Guides**: Traditional braai recipes and cooking tips.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Built with React 19, Vite, TanStack Router & Start, and Tailwind CSS.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+# Install dependencies
+npm install
+
+# Start local development server
 npm run dev
+
+# Build production bundle
+npm run build
 ```
+
+## Contact & Store Location
+
+- **Address**: 129 Fort Street (btwn 13th & 14th Ave), Bulawayo, Zimbabwe
+- **Local Phone / WhatsApp**: `+263 712 851 525`
+- **UK Diaspora WhatsApp**: `+44 7762 068799`
+- **Hours**: Mon–Sat 7:30 AM – 6:00 PM | Sun 8:00 AM – 1:00 PM

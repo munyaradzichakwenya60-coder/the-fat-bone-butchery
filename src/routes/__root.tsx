@@ -77,21 +77,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
+      {
+        name: "description",
+        content:
+          "The Fat Bone Butchery. High-grade meat butchered to order and delivered fresh. 129 Fort Street, Bulawayo.",
+      },
+      { name: "author", content: "The Fat Bone Butchery" },
+      { property: "og:title", content: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
+      {
+        property: "og:description",
+        content:
+          "High grade meat with great taste for every meal. 129 Fort Street, Bulawayo.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@FatBoneButchery" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Barlow:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Alex+Brush&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Pinyon+Script&display=swap",
       },
       {
         rel: "stylesheet",
@@ -99,7 +107,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
-
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -126,7 +133,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );

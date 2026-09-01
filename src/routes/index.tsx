@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Search, ShoppingBag, Beef, Ham, Drumstick, Truck, Leaf, Instagram, Facebook, Twitter } from "lucide-react";
+import { Search, ShoppingBag, Instagram, Facebook, Twitter } from "lucide-react";
 
-import heroMeat from "@/assets/hero-meat.jpg";
-import cow from "@/assets/cow.jpg";
+import heroBanner from "@/assets/hero-banner.jpg";
+import illusPork from "@/assets/illus-pork.png";
+import illusBeef from "@/assets/illus-beef.png";
+import illusPoultry from "@/assets/illus-poultry.png";
 import pRibeye from "@/assets/p-ribeye.jpg";
 import pStrip from "@/assets/p-strip.jpg";
 import pMince from "@/assets/p-mince.jpg";
@@ -15,17 +17,26 @@ import boxPremium from "@/assets/box-premium.jpg";
 import g1 from "@/assets/g1.jpg";
 import g2 from "@/assets/g2.jpg";
 import g3 from "@/assets/g3.jpg";
+import methodCowRear from "@/assets/method-cow-rear.jpg";
+import methodCowsBanner from "@/assets/method-cows-banner.jpg";
+import stepCut from "@/assets/step-cut.png";
+import stepPack from "@/assets/step-pack.png";
+import stepFresh from "@/assets/step-fresh.png";
+import featLambChop from "@/assets/feat-lamb-chop.png";
+import featLegShank from "@/assets/feat-leg-shank.png";
+import featRoundSteak from "@/assets/feat-round-steak.png";
+import { BrushImage } from "@/components/BrushImage";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Meat House — Grass-Fed Meat Boxes From Our Farm To Your Fork" },
+      { title: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
       {
         name: "description",
         content:
-          "Pasture-raised, rare-breed meat butchered to order and delivered fresh. Build your box of grass-fed steaks, pork and poultry from small British farms.",
+          "Pasture-raised, high-grade meat butchered to order and delivered fresh. Build your box of grass-fed steaks, pork and poultry from The Fat Bone Butchery, Bulawayo.",
       },
-      { property: "og:title", content: "Meat House — Grass-Fed Meat Boxes" },
+      { property: "og:title", content: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
       {
         property: "og:description",
         content:
@@ -41,10 +52,9 @@ export const Route = createFileRoute("/")({
 const NAV = ["Home", "About Us", "Products", "Blog", "Pages", "Contact"];
 
 const CATEGORIES = [
-  { title: "Pork Meat", copy: "Free-range heritage pork, dry-aged and hand-cut.", icon: Ham },
-  { title: "Beef Steak", copy: "Grass-fed native breeds, aged a minimum of 28 days.", icon: Beef },
-  { title: "Poultry", copy: "Slow-grown birds raised outdoors on open pasture.", icon: Drumstick },
-
+  { title: "Pork Meat", copy: "100% natural meat and grass fed. GMO free.", img: illusPork },
+  { title: "Beef Steak", copy: "100% natural meat and grass fed. GMO free.", img: illusBeef },
+  { title: "Poultry", copy: "100% natural meat and grass fed. GMO free.", img: illusPoultry },
 ];
 
 const PRODUCTS = [
@@ -55,15 +65,51 @@ const PRODUCTS = [
 ];
 
 const STEPS = [
-  { n: "1", title: "Cut to order", copy: "Your box is butchered the day it ships — never cut weeks ahead and frozen into anonymity." },
-  { n: "2", title: "Packed with care", copy: "Vacuum-sealed in recyclable paper-lined boxes with wool insulation and plant-based ice." },
-  { n: "3", title: "Delivered fresh", copy: "Next-day chilled delivery, tracked to the hour, with a window you actually choose." },
+  {
+    n: "1",
+    img: stepCut,
+    alt: "Raw prime tomahawk steak cut with wooden handle butcher knife",
+    title: "Cut to order",
+    isScript: true,
+    copy: "Our master butcher expertly cuts to your requirements for our skilled and experienced butcher.",
+  },
+  {
+    n: "2",
+    img: stepPack,
+    alt: "Insulated cardboard delivery box with gel packs and vacuum packed meat cuts",
+    title: "Packaged with care",
+    isScript: false,
+    copy: "The cuts are packaged into specially designed insulated boxes, with high-tech gel packs that keep the products cool for up to 48 hours on the road.",
+  },
+  {
+    n: "3",
+    img: stepFresh,
+    alt: "Fresh cut raw steaks arranged on a wooden cutting board with rosemary herbs",
+    title: "Delivered Fresh",
+    isScript: false,
+    copy: "Your order arrives with you perfectly chilled, always fresh. Unlike most other online butchers, we never freeze our meat.",
+  },
 ];
 
 const FEATURES = [
-  { icon: Beef, title: "Responsibly Raised Meat & Fish", copy: "100% pasture-raised and grass-fed. No antibiotics, no hormones, ever." },
-  { icon: Leaf, title: "Sourced Locally", copy: "We partner with 34 small British family farms within a day's drive of the cutting room." },
-  { icon: Truck, title: "Complete Flexibility", copy: "Free shipping over $99. Skip, pause or cancel your box at any time." },
+  {
+    img: featLambChop,
+    alt: "Responsibly raised meat and fish illustration",
+    title: "Responsibly Raised Meat & Fish",
+    copy: "100% pasture-raised and grass-fed. No added antibiotics or hormones, ever. GMO-free.",
+  },
+  {
+    img: featLegShank,
+    alt: "Sourced locally illustration",
+    title: "Sourced Locally",
+    copy: "We partner with local farms who commit to quality and ethical treatment of animals.",
+  },
+  {
+    img: featRoundSteak,
+    alt: "Complete flexibility illustration",
+    title: "Complete Flexibility",
+    copy: "FREE SHIPPING on every order. Pause, skip, or cancel anytime.",
+  },
 ];
 
 const BOXES = [
@@ -104,10 +150,51 @@ function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
     <div
       className={`flex flex-col items-center leading-none ${tone === "light" ? "text-cream" : "text-ink"}`}
     >
-      <span className="text-[9px] uppercase tracking-[0.3em] opacity-70">Est. 1974</span>
-      <span className="font-display text-xl tracking-wide">MEAT HOUSE</span>
-      <span className="mt-0.5 text-[9px] uppercase tracking-[0.3em] text-brand">✕ Butchery ✕</span>
+      <span className="text-[8px] uppercase tracking-[0.3em] opacity-70">129 Fort St · Bulawayo</span>
+      <span className="font-display text-lg sm:text-xl font-bold tracking-wide">THE FAT BONE</span>
+      <span className="mt-0.5 text-[8.5px] uppercase tracking-[0.3em] text-brand font-semibold">✕ Butchery ✕</span>
     </div>
+  );
+}
+
+function BotanicalSprig({ className = "h-4 w-9 text-[#122b3e]" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 52 20" fill="none" className={className}>
+      <path
+        d="M2 14.5 C16 13.5 32 9 49 5.5"
+        stroke="currentColor"
+        strokeWidth="1.3"
+        strokeLinecap="round"
+      />
+      <path
+        d="M10 13.8 C9 9 14 7 17.5 10.5 C15.5 12.8 12.5 13.8 10 13.8 Z"
+        fill="currentColor"
+      />
+      <path
+        d="M12 14.2 C13 18.5 18 18.5 18.5 15 C16.5 13.8 14 13.8 12 14.2 Z"
+        fill="currentColor"
+      />
+      <path
+        d="M21 11.5 C20 6.5 25 4.5 28.5 8 C26.5 10.3 23.5 11.5 21 11.5 Z"
+        fill="currentColor"
+      />
+      <path
+        d="M23 12 C24 16.2 29 16 29.5 12.5 C27.5 11.5 25 11.5 23 12 Z"
+        fill="currentColor"
+      />
+      <path
+        d="M32 9 C31 4 36 2 39.5 5.5 C37.5 7.8 34.5 9 32 9 Z"
+        fill="currentColor"
+      />
+      <path
+        d="M35 9.5 C36 13.5 40 13 41 10 C39 9 37 9 35 9.5 Z"
+        fill="currentColor"
+      />
+      <path
+        d="M43 6.8 C44 3.5 48 3.5 49.5 5 C47.5 6.5 45.5 6.8 43 6.8 Z"
+        fill="currentColor"
+      />
+    </svg>
   );
 }
 
@@ -140,97 +227,147 @@ function Index() {
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-cream">
-        <div className="relative mx-auto grid max-w-[1600px] items-center gap-8 pt-32 lg:grid-cols-[1fr_1.15fr]">
-          <div className="px-6 pb-20 lg:pl-[max(1.5rem,calc((100vw-80rem)/2))]">
-            <div className="max-w-md bg-brand p-10 text-brand-foreground">
-              <h1 className="font-display text-4xl leading-tight md:text-5xl">
-                From our farm
+      <section className="relative w-full overflow-hidden bg-white">
+        <div className="relative mx-auto aspect-[1024/569] min-h-[460px] w-full max-w-[1600px]">
+          <img
+            src={heroBanner}
+            alt="Fresh butcher meat selection from farm to table"
+            className="absolute inset-0 h-full w-full object-contain object-center"
+          />
+          {/* Card positioned right on the cutting board near tractor wheel */}
+          <div className="absolute bottom-[4%] left-[14%] z-10 w-[85%] max-w-[340px] overflow-hidden bg-brand px-6 py-5 text-brand-foreground shadow-2xl sm:left-[16%] sm:max-w-[380px] sm:px-8 sm:py-6 md:left-[17%] md:max-w-[440px] md:px-9 md:py-7 lg:max-w-[470px]">
+            {/* Geometric cube pattern on left side */}
+            <svg
+              className="pointer-events-none absolute left-0 top-0 h-full w-14 text-white/[0.12]"
+              viewBox="0 0 56 240"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+            >
+              <pattern id="cube-pattern" width="28" height="32" patternUnits="userSpaceOnUse">
+                <path d="M14 0 L28 8 L28 24 L14 32 L0 24 L0 8 Z" fill="none" stroke="currentColor" />
+                <path d="M14 0 L14 16 L28 24" stroke="currentColor" />
+                <path d="M14 16 L0 24" stroke="currentColor" />
+              </pattern>
+              <rect width="56" height="240" fill="url(#cube-pattern)" />
+            </svg>
+
+            {/* Top-right organic steak contour lines */}
+            <svg
+              className="pointer-events-none absolute right-0 top-0 h-36 w-36 text-white/[0.15] sm:h-44 sm:w-44"
+              viewBox="0 0 160 160"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              <ellipse cx="120" cy="40" rx="45" ry="32" transform="rotate(-15 120 40)" />
+              <ellipse cx="120" cy="40" rx="32" ry="22" transform="rotate(-15 120 40)" />
+              <ellipse cx="120" cy="40" rx="20" ry="12" transform="rotate(-15 120 40)" />
+              <ellipse cx="120" cy="40" rx="10" ry="6" transform="rotate(-15 120 40)" />
+              <path d="M40,110 Q90,70 160,120" strokeWidth="1.2" />
+            </svg>
+
+            <div className="relative pl-2 sm:pl-3">
+              <h1 className="font-display text-2xl font-semibold leading-[1.12] text-white sm:text-3xl md:text-[36px]">
+                From our farm to
                 <br />
-                to your fork
+                your fork
               </h1>
-              <p className="mt-4 text-sm leading-relaxed text-brand-foreground/80">
-                Special holiday products now available for pick up. Rare-breed meat, cut to order
-                by our butchers and delivered chilled.
+              <p className="mt-2.5 text-[11px] text-white/90 sm:mt-3 sm:text-xs">
+                High grade meat with great taste for every meal.
               </p>
-              <div className="mt-7">
-                <Btn variant="light">Place Order Now</Btn>
+              <div className="mt-4 sm:mt-6">
+                <button className="relative overflow-hidden bg-white px-5 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-ink shadow-sm transition-all hover:bg-cream hover:text-brand sm:px-7 sm:py-2.5 sm:text-[11px]">
+                  <span className="absolute bottom-0 left-0 h-0 w-0 border-b-[8px] border-l-[8px] border-b-[#1e293b] border-l-transparent" />
+                  Place Order Now
+                </button>
               </div>
             </div>
-          </div>
-          <div className="relative">
-            <img
-              src={heroMeat}
-              alt="Raw grass-fed beef cubes on a plate with peppercorns, garlic and thyme"
-              width={1600}
-              height={1008}
-              className="h-[420px] w-full object-cover lg:h-[640px]"
-            />
           </div>
         </div>
       </section>
 
       {/* Categories */}
-      <section className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid gap-6 border border-dashed border-border p-6 md:grid-cols-3">
+      <section className="mx-auto max-w-6xl px-6 py-12 lg:py-16">
+        <div className="grid gap-6 md:grid-cols-3">
           {CATEGORIES.map((c) => (
             <div
               key={c.title}
-              className="flex items-center gap-5 border border-border bg-background p-6 transition-colors hover:border-brand"
+              className="group relative flex min-h-[175px] items-center justify-between overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-md cursor-pointer"
             >
-              <c.icon className="h-10 w-10 shrink-0 text-ink/70" strokeWidth={1} />
-              <div>
-                <h3 className="font-display text-lg">{c.title}</h3>
-                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{c.copy}</p>
+              <div className="flex h-full w-[44%] items-center justify-start">
+                <img
+                  src={c.img}
+                  alt={c.title}
+                  className="max-h-[125px] w-full object-contain object-left transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div className="w-[56%] pl-3">
+                <h3 className="text-xl font-bold tracking-tight text-[#0f2942] sm:text-2xl">
+                  {c.title}
+                </h3>
+                <div className="my-2.5 h-[2px] w-6 bg-slate-300" />
+                <p className="text-xs font-normal leading-relaxed text-slate-500">
+                  {c.copy}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Pasture-raised promise */}
-      <section className="relative bg-cream py-10 lg:py-16">
-        <div className="relative mx-auto max-w-[1500px]">
-          <div className="grid gap-3 lg:grid-cols-[1fr_1.6fr]">
-            <img
-              src={cow}
-              alt="Hereford cow grazing at dusk"
-              width={1400}
-              height={900}
-              loading="lazy"
-              className="hidden h-[520px] w-full object-cover lg:block"
-            />
-            <img
-              src={cow}
-              alt="Hereford cow standing in a dark pasture"
-              width={1400}
-              height={900}
-              loading="lazy"
-              className="h-[380px] w-full object-cover lg:h-[520px]"
+      {/* Our Methods - Pasture-Raised Promise */}
+      <section className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto flex max-w-[1560px] flex-col items-center justify-between gap-10 px-4 sm:px-6 lg:flex-row lg:items-center lg:gap-8 lg:px-8 xl:gap-12">
+          {/* Left Flank Image with Distressed Torn/Brush Borders */}
+          <div className="w-full sm:w-[220px] lg:w-[240px] xl:w-[270px] shrink-0 h-[280px] sm:h-[360px] lg:h-[400px] xl:h-[430px]">
+            <BrushImage
+              src={methodCowRear}
+              alt="Pasture-raised cattle hindquarters and natural coat"
+              className="h-full w-full"
+              imgClassName="object-cover object-center"
             />
           </div>
-          <div className="mx-6 -mt-24 max-w-md bg-background p-10 lg:absolute lg:left-[8%] lg:top-1/2 lg:m-0 lg:-translate-y-1/2">
-            <Eyebrow>Our Method</Eyebrow>
-            <h2 className="mt-4 font-display text-3xl leading-tight md:text-4xl">
+
+          {/* Center Text Column */}
+          <div className="flex max-w-[420px] shrink-0 flex-col items-start px-2 sm:px-4 lg:px-2 xl:px-4">
+            <BotanicalSprig className="h-4 w-9 text-[#122b3e] mb-1.5" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#c67c52]">
+              OUR METHODS
+            </span>
+            <h2 className="mt-2.5 font-display text-3xl sm:text-[38px] lg:text-[42px] font-bold leading-[1.08] tracking-tight text-[#0e2638]">
               Pasture-Raised
               <br />
               Promise
             </h2>
-            <p className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
-              Animal welfare is the utmost important to us
+            <p className="mt-3 font-display italic text-[13.5px] sm:text-[14.5px] text-[#1c364c] tracking-wide">
+              Animal welfare is of the utmost importance to us.
             </p>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              Every animal we sell has spent its whole life outdoors on grass, moved between
-              paddocks by farmers we know by name. No feedlots. No routine antibiotics. Slower
-              growing, better living — and a depth of flavour you can taste in the pan.
+            <p className="mt-4.5 text-[11.5px] sm:text-[12px] leading-[1.75] text-[#555e6d]">
+              That's why we only work with farms and processors that share in our
+              passion for good animal husbandry. We promise every animal that comes
+              in our shop has been raised on lush pastures, given a diverse natural diet,
+              and raised without the use of hormones or antibiotics.
             </p>
             <div className="mt-7">
-              <Btn variant="outline">Meet Our Farmers</Btn>
+              <button className="group relative inline-flex items-center justify-center border border-[#0e2638] bg-transparent px-7 py-2.5 text-[10.5px] font-bold uppercase tracking-[0.22em] text-[#0e2638] transition-all duration-200 hover:bg-[#0e2638] hover:text-white cursor-pointer">
+                <span className="absolute bottom-0 left-0 h-0 w-0 border-b-[8px] border-l-[8px] border-b-[#0e2638] border-l-transparent transition-colors group-hover:border-b-white" />
+                MEET OUR FARMERS
+              </button>
             </div>
+          </div>
+
+          {/* Right Wide Banner Image with Distressed Torn/Brush Borders */}
+          <div className="w-full flex-1 min-w-0 h-[280px] sm:h-[360px] lg:h-[400px] xl:h-[430px]">
+            <BrushImage
+              src={methodCowsBanner}
+              alt="Hereford and Black Angus cattle grazing in pasture"
+              className="h-full w-full"
+              imgClassName="object-cover object-[center_35%]"
+            />
           </div>
         </div>
       </section>
-
 
       {/* Recommended */}
       <section className="mx-auto max-w-7xl px-6 py-24">
@@ -272,22 +409,71 @@ function Index() {
         </div>
       </section>
 
-      {/* Steps */}
-      <section className="bg-sand py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[0.7fr_2fr]">
-          <h2 className="font-display text-3xl leading-tight md:text-4xl">
-            From block
-            <br />
-            to box to you
-          </h2>
-          <div className="grid gap-10 sm:grid-cols-3">
-            {STEPS.map((s) => (
-              <div key={s.n}>
-                <span className="font-display text-5xl text-brand/30">{s.n}</span>
-                <h3 className="mt-3 font-display text-lg">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.copy}</p>
+      {/* Steps - From block to box to you */}
+      <section className="relative overflow-hidden bg-white">
+        {/* Top light area / Bottom ecru area split */}
+        <div className="relative pt-6 pb-16 sm:pb-20 lg:pb-24">
+          {/* Ecru textured background filling the bottom part */}
+          <div className="absolute inset-x-0 bottom-0 top-[100px] sm:top-[120px] lg:top-[135px] bg-[#ede7dc]">
+            {/* Subtle organic speckle/paper grain texture */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.35]"
+              style={{
+                backgroundImage: `radial-gradient(#4d5d6c 0.85px, transparent 0.85px), radial-gradient(#2c3740 0.5px, #ede7dc 0.5px)`,
+                backgroundSize: "36px 36px, 84px 84px",
+                backgroundPosition: "0 0, 28px 42px",
+              }}
+            />
+          </div>
+
+          <div className="relative mx-auto max-w-[1440px] px-6 sm:px-10 lg:px-14">
+            <div className="grid items-start gap-8 lg:grid-cols-[270px_1fr] xl:grid-cols-[300px_1fr]">
+              {/* Left title column */}
+              <div className="pt-28 sm:pt-32 lg:pt-36">
+                <h2 className="font-sans text-3xl font-bold leading-[1.12] tracking-tight text-[#4e5e6e] sm:text-4xl lg:text-[40px]">
+                  From block to
+                  <br />
+                  box to you
+                </h2>
               </div>
-            ))}
+
+              {/* 3 Steps columns */}
+              <div className="grid gap-8 sm:grid-cols-3 lg:gap-10 xl:gap-14">
+                {STEPS.map((s) => (
+                  <div key={s.n} className="flex flex-col">
+                    {/* Step product image spanning across the background boundary */}
+                    <div className="flex h-[150px] sm:h-[170px] lg:h-[185px] w-full items-end justify-start overflow-visible">
+                      <img
+                        src={s.img}
+                        alt={s.alt}
+                        className="max-h-full max-w-full object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-105"
+                      />
+                    </div>
+
+                    {/* Number & Title & Copy */}
+                    <div className="mt-4 flex items-start gap-3 sm:gap-4">
+                      <span className="font-sans text-[62px] font-extrabold leading-[0.82] text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.06)] sm:text-[70px] lg:text-[78px] select-none">
+                        {s.n}
+                      </span>
+                      <div className="flex-1 pt-0.5">
+                        {s.isScript ? (
+                          <h3 className="font-script text-[26px] italic leading-tight text-[#4e5e6e] sm:text-[29px] lg:text-[32px]">
+                            {s.title}
+                          </h3>
+                        ) : (
+                          <h3 className="font-sans text-[14px] font-bold leading-snug text-[#4e5e6e] sm:text-[15px]">
+                            {s.title}
+                          </h3>
+                        )}
+                        <p className="mt-2 text-[11px] sm:text-[11.5px] leading-[1.65] text-[#637282] font-normal">
+                          {s.copy}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -312,34 +498,68 @@ function Index() {
           <div className="text-sm leading-relaxed text-muted-foreground">
             <p>
               <span className="float-left mr-3 font-display text-6xl leading-none text-ink">R</span>
-              are breeds are slower to fatten and smaller in frame than the commodity animals that
-              fill most supermarket shelves — which is exactly why almost nobody farms them any
-              more. Longhorn, Tamworth, Dexter and Hebridean carry fat differently, marble more
-              finely, and reward a butcher willing to work with the whole carcass rather than four
-              fashionable cuts.
+              are breeds are slower to fatten and smaller in frame than commodity animals. Longhorn,
+              Tamworth, Dexter and native cattle carry fat differently, marble more finely, and reward
+              a butcher willing to work with the whole carcass with honest care.
             </p>
             <p className="mt-4">
-              We buy whole animals from farms that keep herds in the dozens, not the thousands. That
-              means our range shifts with the seasons, and occasionally a cut sells out entirely. We
-              think that's a feature. It keeps our farmers viable and our standards honest.
+              We select the best livestock from farms committed to quality and animal welfare. That means
+              our range delivers exceptional freshness and flavor in every cut.
             </p>
           </div>
         </div>
-        <div className="mt-14 grid gap-4 sm:grid-cols-3">
-          <img src={g1} alt="Beef ribs hanging in a rustic butchery" width={700} height={700} loading="lazy" className="h-64 w-full object-cover sm:mt-10" />
-          <img src={g2} alt="Beef carcasses dry-aging in a cold locker" width={700} height={700} loading="lazy" className="h-72 w-full object-cover" />
-          <img src={g3} alt="Butcher wrapping a beef roast in butcher paper" width={700} height={700} loading="lazy" className="h-64 w-full object-cover sm:mt-10" />
+        <div className="mt-14 grid gap-6 sm:grid-cols-3 items-center">
+          <div className="overflow-hidden bg-slate-100 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+            <img
+              src={g1}
+              alt="Artisanal beef ribs hanging in a rustic butcher shop"
+              width={800}
+              height={600}
+              loading="lazy"
+              className="h-72 lg:h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="overflow-hidden bg-slate-100 shadow-sm transition-transform duration-300 hover:-translate-y-1 sm:-mt-6 sm:-mb-6">
+            <img
+              src={g2}
+              alt="Beef carcasses dry-aging on overhead rails in cold locker"
+              width={600}
+              height={800}
+              loading="lazy"
+              className="h-80 lg:h-96 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
+          <div className="overflow-hidden bg-slate-100 shadow-sm transition-transform duration-300 hover:-translate-y-1">
+            <img
+              src={g3}
+              alt="Master butcher wrapping seasoned beef roast in wax butcher paper"
+              width={800}
+              height={600}
+              loading="lazy"
+              className="h-72 lg:h-80 w-full object-cover transition-transform duration-500 hover:scale-105"
+            />
+          </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="border-y border-border">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-3">
+      {/* Features - Value Pillars */}
+      <section className="border-t border-slate-200/80 bg-white py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 sm:grid-cols-3 lg:gap-16">
           {FEATURES.map((f) => (
-            <div key={f.title} className="text-center">
-              <f.icon className="mx-auto h-8 w-8 text-brand" strokeWidth={1.25} />
-              <h3 className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em]">{f.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{f.copy}</p>
+            <div key={f.title} className="flex flex-col items-center text-center">
+              <div className="flex h-20 w-24 items-center justify-center">
+                <img
+                  src={f.img}
+                  alt={f.alt}
+                  className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <h3 className="mt-5 font-display text-xl sm:text-[22px] font-bold text-[#143048] tracking-tight">
+                {f.title}
+              </h3>
+              <p className="mt-3 max-w-[300px] text-[12px] sm:text-[13px] leading-[1.65] text-slate-500 font-normal">
+                {f.copy}
+              </p>
             </div>
           ))}
         </div>
@@ -418,7 +638,7 @@ function Index() {
             your mouth water
           </h2>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-brand-foreground/80">
-            Reverse-seared rib of beef, slow-braised shin, Sunday porchetta — written by our head
+            Reverse-seared rib of beef, slow-braised shin, Sunday roast — written by our head
             butcher for real kitchens, with timings that actually work.
           </p>
           <div className="mt-8 self-start">
@@ -427,7 +647,7 @@ function Index() {
         </div>
         <img
           src={recipes}
-          alt="Sliced roast beef on a plate with red wine on a rustic table"
+          alt="Master butcher slicing fresh beef tenderloin on cutting board"
           width={1400}
           height={900}
           loading="lazy"
@@ -440,9 +660,9 @@ function Index() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <h2 className="font-display text-2xl">Share your #MeatHouse experience!</h2>
+              <h2 className="font-display text-2xl">Share your #FatBone experience!</h2>
               <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-                We are all about lifelong tastes, honest and better. Tag us and we might just
+                We are all about lifelong tastes, honest cuts, and deep flavor. Tag us and we might just
                 feature your cook.
               </p>
             </div>
@@ -453,7 +673,7 @@ function Index() {
               <img
                 key={i}
                 src={img}
-                alt="Customer cooking with Meat House cuts"
+                alt="Customer cooking with The Fat Bone Butchery cuts"
                 width={700}
                 height={700}
                 loading="lazy"
@@ -492,9 +712,9 @@ function Index() {
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <Logo />
           {[
-            { title: "Our Company", links: ["About Us", "Our Farmers", "Careers", "Our Butchers", "Meat House"] },
+            { title: "Our Company", links: ["About Us", "Our Farmers", "Careers", "Our Butchers", "The Fat Bone"] },
             { title: "Customer Service", links: ["How to Order", "Delivery Info", "FAQ", "Returns", "Privacy Policy"] },
-            { title: "Need Assistance?", links: ["hello@meathouse.com", "184 Water Road, St Marys Park", "+1 (415) 555-0142"] },
+            { title: "Need Assistance?", links: ["hello@fatbonebutchery.com", "129 Fort Street, Bulawayo", "+263 712 851 525"] },
           ].map((col) => (
             <div key={col.title}>
               <h3 className="text-[11px] font-bold uppercase tracking-[0.18em]">{col.title}</h3>
@@ -511,7 +731,7 @@ function Index() {
           ))}
         </div>
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-6">
-          <p className="text-xs text-muted-foreground">© 2026 Meat House. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© 2026 The Fat Bone Butchery. All rights reserved.</p>
           <div className="flex items-center gap-4 text-muted-foreground">
             <Instagram className="h-4 w-4" />
             <Facebook className="h-4 w-4" />
