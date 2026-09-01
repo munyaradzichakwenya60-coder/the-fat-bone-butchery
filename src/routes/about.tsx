@@ -149,7 +149,7 @@ function AboutPage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="bg-paper py-20">
+      <section className="bg-[#f7f4ee] py-20 border-y border-slate-200">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center max-w-xl mx-auto mb-12">
             <Eyebrow>BEHIND THE BLOCK</Eyebrow>

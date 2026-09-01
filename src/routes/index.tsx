@@ -208,11 +208,11 @@ function Btn({
   onClick?: () => void;
 }) {
   const base =
-    "inline-flex items-center justify-center px-6 sm:px-7 py-2.5 sm:py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors cursor-pointer";
+    "inline-flex items-center justify-center px-6 sm:px-7 py-3 text-xs font-extrabold uppercase tracking-[0.18em] transition-colors cursor-pointer rounded-xs shadow-xs";
   const styles = {
-    solid: "bg-brand text-brand-foreground hover:bg-ink",
-    outline: "border border-ink/25 text-ink hover:border-brand hover:text-brand",
-    light: "bg-cream text-brand hover:bg-brand hover:text-brand-foreground",
+    solid: "bg-brand text-white hover:bg-ink shadow-sm",
+    outline: "border-2 border-slate-400 bg-white text-slate-900 hover:border-brand hover:text-brand",
+    light: "bg-cream text-brand hover:bg-brand hover:text-white border-2 border-brand/30",
   } as const;
   return (
     <button onClick={onClick} className={`${base} ${styles[variant]}`}>

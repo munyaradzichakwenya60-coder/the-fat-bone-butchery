@@ -44,37 +44,47 @@ export function SearchModal({ isOpen, onClose, onSelectProduct }: SearchModalPro
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-start justify-center pt-20 px-4">
-      {/* Backdrop */}
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="search-modal-title"
+      className="fixed inset-0 z-50 overflow-y-auto flex items-start justify-center pt-16 sm:pt-20 px-4"
+    >
+      {/* High-Contrast Backdrop */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-ink/60 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+        aria-hidden="true"
       />
 
-      <div className="relative bg-paper border border-ink/20 shadow-2xl max-w-xl w-full rounded-sm overflow-hidden z-10 animate-in fade-in-50 zoom-in-95 duration-200">
-        <div className="p-4 border-b border-ink/10 flex items-center gap-3 bg-cream/70">
-          <Search className="h-5 w-5 text-brand" />
+      <div className="relative bg-white border-2 border-slate-300 shadow-2xl max-w-xl w-full rounded-md overflow-hidden z-10 animate-in fade-in-50 zoom-in-95 duration-200">
+        <div className="p-4 border-b-2 border-slate-200 flex items-center gap-3 bg-[#f7f4ee]">
+          <Search className="h-5 w-5 text-brand shrink-0 stroke-[2.5]" />
           <input
+            id="search-modal-title"
             type="text"
-            placeholder="Search steaks, pork, chicken, boerewors, or boxes..."
+            placeholder="Search steaks, mince, boerewors, boxes..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
-            className="flex-1 bg-transparent border-none text-ink placeholder:text-ink/40 text-sm focus:outline-none"
+            className="flex-1 bg-transparent border-none text-slate-900 placeholder:text-slate-500 text-sm sm:text-base font-semibold focus:outline-none"
           />
           <button
             onClick={onClose}
-            className="p-1.5 text-ink/50 hover:text-ink transition-colors rounded-full hover:bg-ink/5"
+            aria-label="Close search"
+            className="p-1.5 text-slate-700 hover:text-black transition-colors rounded-full hover:bg-slate-200 cursor-pointer"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="max-h-[60vh] overflow-y-auto p-4 divide-y divide-ink/10">
+        <div className="max-h-[60vh] overflow-y-auto p-4 divide-y divide-slate-200 bg-white">
           {results.length === 0 ? (
-            <div className="py-12 text-center text-ink/60">
-              <p className="text-sm">No butchery items match "{query}"</p>
-              <p className="text-xs text-ink/40 mt-1">Try searching for "Steak", "Mince", "Box", or "Boerewors"</p>
+            <div className="py-12 text-center text-slate-700">
+              <p className="text-sm sm:text-base font-bold">No butchery items match "{query}"</p>
+              <p className="text-xs text-slate-500 mt-1 font-medium">
+                Try searching for "Steak", "Mince", "Box", or "Boerewors"
+              </p>
             </div>
           ) : (
             results.map((item) => (
@@ -84,28 +94,28 @@ export function SearchModal({ isOpen, onClose, onSelectProduct }: SearchModalPro
                   onSelectProduct(item);
                   onClose();
                 }}
-                className="py-3 flex items-center justify-between gap-4 cursor-pointer hover:bg-sand/40 p-2 rounded transition-colors group"
+                className="py-3.5 px-3 flex items-center justify-between gap-4 cursor-pointer hover:bg-slate-100 rounded-md transition-colors group"
               >
                 <div className="flex items-center gap-3">
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-12 h-12 object-cover rounded border border-ink/10"
+                    className="w-14 h-14 object-cover rounded-md border-2 border-slate-200 shadow-xs shrink-0"
                   />
                   <div>
-                    <span className="text-[9px] uppercase tracking-wider font-semibold text-brand block">
+                    <span className="text-[10px] uppercase tracking-wider font-extrabold text-brand block">
                       {item.category}
                     </span>
-                    <h5 className="font-display text-sm font-semibold text-ink group-hover:text-brand transition-colors">
+                    <h5 className="font-display text-sm sm:text-base font-bold text-slate-900 group-hover:text-brand transition-colors">
                       {item.name}
                     </h5>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-ink">{formatPrice(item.price)}</span>
-                  <div className="p-1.5 rounded-full bg-brand/10 text-brand group-hover:bg-brand group-hover:text-white transition-colors">
-                    <ArrowRight className="h-3.5 w-3.5" />
+                <div className="flex items-center gap-3 shrink-0">
+                  <span className="text-sm font-extrabold text-slate-900">{formatPrice(item.price)}</span>
+                  <div className="p-2 rounded-full bg-brand text-white transition-transform group-hover:scale-110">
+                    <ArrowRight className="h-4 w-4" />
                   </div>
                 </div>
               </div>
@@ -113,8 +123,8 @@ export function SearchModal({ isOpen, onClose, onSelectProduct }: SearchModalPro
           )}
         </div>
 
-        <div className="p-3 bg-sand/30 border-t border-ink/10 text-[11px] text-center text-ink/50">
-          Tip: You can order any custom cut via our WhatsApp line at <span className="font-semibold text-brand">+263 712 851 525</span>
+        <div className="p-3.5 bg-[#f7f4ee] border-t-2 border-slate-200 text-xs text-center text-slate-800 font-medium">
+          Tip: You can order any custom cut via our WhatsApp line at <strong className="text-brand">+263 712 851 525</strong>
         </div>
       </div>
     </div>

@@ -148,20 +148,23 @@ function ProductsPage() {
           </p>
 
           {/* Category Filter Pills */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
-                  selectedCategory === cat
-                    ? "bg-brand text-brand-foreground shadow-sm"
-                    : "bg-white text-ink/75 hover:bg-sand border border-ink/10"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+            {CATEGORIES.map((cat) => {
+              const isSelected = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-brand text-white shadow-sm border-2 border-brand font-extrabold"
+                      : "bg-white text-slate-800 hover:bg-slate-100 border-2 border-slate-300 hover:border-slate-500"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -170,10 +173,10 @@ function ProductsPage() {
       <section className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {filteredProducts.map((p) => (
-            <article key={p.id} className="group flex flex-col justify-between bg-white border border-ink/10 p-4 rounded-sm shadow-xs hover:shadow-md transition-shadow">
-              <div className="relative overflow-hidden bg-secondary">
+            <article key={p.id} className="group flex flex-col justify-between bg-white border-2 border-slate-200 p-4 rounded-md shadow-xs hover:shadow-md transition-shadow">
+              <div className="relative overflow-hidden bg-slate-100 rounded-sm">
                 {p.tag && (
-                  <span className="absolute right-3 top-3 z-10 bg-brand px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-foreground">
+                  <span className="absolute right-3 top-3 z-10 bg-brand px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white shadow-sm rounded-xs">
                     {p.tag}
                   </span>
                 )}
@@ -189,15 +192,15 @@ function ProductsPage() {
 
               <div className="pt-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <span className="text-[9px] uppercase tracking-wider font-bold text-brand block mb-1">
+                  <span className="text-[10px] uppercase tracking-wider font-extrabold text-brand block mb-1">
                     {p.category}
                   </span>
-                  <h3 className="font-display text-base font-semibold leading-snug">{p.name}</h3>
-                  <p className="mt-2 text-sm">
+                  <h3 className="font-display text-base sm:text-lg font-bold text-slate-900 leading-snug">{p.name}</h3>
+                  <p className="mt-2 text-sm sm:text-base">
                     {p.was && (
-                      <span className="mr-2 text-muted-foreground line-through">{p.was}</span>
+                      <span className="mr-2 text-slate-400 line-through font-medium">{p.was}</span>
                     )}
-                    <span className="font-bold text-brand">{formatPrice(p.price)}</span>
+                    <span className="font-extrabold text-brand text-base sm:text-lg">{formatPrice(p.price)}</span>
                   </p>
                 </div>
 
@@ -213,7 +216,7 @@ function ProductsPage() {
                         options: p.options,
                       })
                     }
-                    className="inline-flex w-full items-center justify-center bg-brand px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-foreground hover:bg-ink transition-colors cursor-pointer"
+                    className="inline-flex w-full items-center justify-center bg-brand px-5 py-3 text-xs font-extrabold uppercase tracking-[0.16em] text-white hover:bg-ink transition-colors cursor-pointer rounded-sm shadow-xs"
                   >
                     Select Options & Add
                   </button>

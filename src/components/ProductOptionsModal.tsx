@@ -53,98 +53,122 @@ export function ProductOptionsModal({ product, onClose }: ProductOptionsModalPro
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
-      {/* Backdrop */}
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="product-modal-title"
+      className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4"
+    >
+      {/* High-Contrast Backdrop */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-ink/60 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+        aria-hidden="true"
       />
 
-      {/* Modal Dialog */}
-      <div className="relative bg-paper border border-ink/20 shadow-2xl max-w-lg w-full rounded-sm overflow-hidden z-10 animate-in zoom-in-95 duration-200">
-        <div className="p-6 border-b border-ink/10 flex items-center justify-between bg-cream/70">
+      {/* Solid High-Contrast Modal Dialog */}
+      <div className="relative bg-white border-2 border-slate-300 shadow-2xl max-w-lg w-full rounded-md overflow-hidden z-10 animate-in zoom-in-95 duration-200">
+        
+        {/* Modal Header */}
+        <div className="px-6 py-4 border-b-2 border-slate-200 flex items-center justify-between bg-[#f7f4ee]">
           <div className="flex items-center gap-2">
-            <span className="h-px w-4 bg-brand/50" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand">Select Cut Options</span>
-            <span className="h-px w-4 bg-brand/50" />
+            <span className="h-0.5 w-5 bg-brand" />
+            <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-brand">
+              Select Cut Options
+            </span>
+            <span className="h-0.5 w-5 bg-brand" />
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-ink/50 hover:text-ink transition-colors rounded-full hover:bg-ink/5"
+            aria-label="Close options modal"
+            className="p-2 text-slate-700 hover:text-black transition-colors rounded-full hover:bg-slate-200 focus-visible:ring-2 focus-visible:ring-brand"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
-          <div className="flex gap-4 items-start">
+        {/* Modal Body */}
+        <div className="p-6 space-y-6 bg-white">
+          {/* Product Header & Price */}
+          <div className="flex gap-4 items-start pb-4 border-b border-slate-200">
             <img
               src={product.image}
               alt={product.name}
-              className="w-24 h-24 object-cover rounded border border-ink/10 shrink-0"
+              className="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded-md border-2 border-slate-200 shrink-0 shadow-xs"
             />
-            <div className="space-y-1">
-              <h3 className="font-display text-lg font-bold text-ink leading-snug">{product.name}</h3>
-              <p className="text-sm font-semibold text-brand">{formatPrice(product.price)}</p>
-              <p className="text-xs text-ink/60">
+            <div className="space-y-1.5 flex-1">
+              <h3 id="product-modal-title" className="font-display text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+                {product.name}
+              </h3>
+              <p className="text-lg font-extrabold text-brand">
+                {formatPrice(product.price)}
+              </p>
+              <p className="text-xs text-slate-700 font-medium leading-relaxed">
                 100% pasture-raised, grass-fed & antibiotic-free from Zimbabwe ranches.
               </p>
             </div>
           </div>
 
           {/* Cutting / Preparation Style */}
-          <div className="space-y-2">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-ink/80 block">
+          <div className="space-y-2.5">
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-900 block">
               Butcher Cutting Style:
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {defaultOptions.map((opt) => (
-                <button
-                  key={opt}
-                  onClick={() => setSelectedOption(opt)}
-                  className={`p-2.5 text-left text-xs border rounded transition-all flex items-center justify-between ${
-                    selectedOption === opt
-                      ? "border-brand bg-brand/5 font-semibold text-brand"
-                      : "border-ink/15 hover:border-ink/40 text-ink/75"
-                  }`}
-                >
-                  <span>{opt}</span>
-                  {selectedOption === opt && <Check className="h-3.5 w-3.5 text-brand shrink-0" />}
-                </button>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {defaultOptions.map((opt) => {
+                const isSelected = selectedOption === opt;
+                return (
+                  <button
+                    key={opt}
+                    onClick={() => setSelectedOption(opt)}
+                    className={`p-3 text-left text-xs rounded-md transition-all flex items-center justify-between cursor-pointer focus-visible:ring-2 focus-visible:ring-brand ${
+                      isSelected
+                        ? "border-2 border-brand bg-red-50 text-slate-900 font-bold shadow-xs"
+                        : "border-2 border-slate-300 hover:border-slate-500 bg-white text-slate-800 font-semibold"
+                    }`}
+                  >
+                    <span className="text-xs sm:text-[13px]">{opt}</span>
+                    {isSelected && <Check className="h-4 w-4 text-brand shrink-0 stroke-[2.5]" />}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Quantity */}
-          <div className="space-y-2">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-ink/80 block">
+          <div className="space-y-2.5 pt-1">
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-900 block">
               Quantity / Packs:
             </label>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center border border-ink/20 rounded bg-white">
+            <div className="flex items-center gap-4 flex-wrap">
+              <div className="flex items-center border-2 border-slate-300 rounded-md bg-white overflow-hidden shadow-xs">
                 <button
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="p-2 text-ink/70 hover:text-brand transition-colors"
+                  aria-label="Decrease quantity"
+                  className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold transition-colors cursor-pointer"
                 >
-                  <Minus className="h-4 w-4" />
+                  <Minus className="h-4 w-4 stroke-[2.5]" />
                 </button>
-                <span className="px-4 text-sm font-semibold min-w-[32px] text-center">{quantity}</span>
+                <span className="px-5 text-base font-extrabold text-slate-900 min-w-[36px] text-center">
+                  {quantity}
+                </span>
                 <button
                   onClick={() => setQuantity((q) => q + 1)}
-                  className="p-2 text-ink/70 hover:text-brand transition-colors"
+                  aria-label="Increase quantity"
+                  className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold transition-colors cursor-pointer"
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="h-4 w-4 stroke-[2.5]" />
                 </button>
               </div>
-              <span className="text-xs text-ink/60 font-medium">
-                Total: <span className="font-bold text-ink">{formatPrice(product.price * quantity)}</span>
+              <span className="text-sm text-slate-800 font-semibold">
+                Total: <span className="text-base font-extrabold text-brand">{formatPrice(product.price * quantity)}</span>
               </span>
             </div>
           </div>
 
           {/* Special Requests */}
-          <div className="space-y-1.5">
-            <label className="text-[11px] font-bold uppercase tracking-wider text-ink/80 block">
+          <div className="space-y-2 pt-1">
+            <label className="text-xs font-bold uppercase tracking-wider text-slate-900 block">
               Custom Cutting Instructions (Optional):
             </label>
             <input
@@ -152,23 +176,24 @@ export function ProductOptionsModal({ product, onClose }: ProductOptionsModalPro
               placeholder="e.g. Separate into 500g vacuum packs, trim fat, etc."
               value={specialNote}
               onChange={(e) => setSpecialNote(e.target.value)}
-              className="w-full bg-white border border-ink/20 rounded px-3 py-2 text-xs focus:outline-none focus:border-brand"
+              className="w-full bg-white border-2 border-slate-300 focus:border-brand rounded-md p-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-500 font-medium focus:outline-none focus:ring-2 focus:ring-brand/20"
             />
           </div>
         </div>
 
-        <div className="p-6 border-t border-ink/10 bg-cream/70 flex gap-3 justify-end">
+        {/* Modal Footer */}
+        <div className="p-5 border-t-2 border-slate-200 bg-[#f7f4ee] flex flex-wrap gap-3 justify-end items-center">
           <button
             onClick={onClose}
-            className="px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] border border-ink/25 text-ink hover:border-brand hover:text-brand transition-colors"
+            className="px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] border-2 border-slate-400 bg-white hover:bg-slate-100 text-slate-900 transition-colors rounded-md cursor-pointer"
           >
             Cancel
           </button>
           <button
             onClick={handleAddToCart}
-            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] bg-brand text-brand-foreground hover:bg-ink transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3 text-xs font-extrabold uppercase tracking-[0.16em] bg-brand text-white hover:bg-ink transition-colors rounded-md shadow-md cursor-pointer"
           >
-            <ShoppingBag className="h-3.5 w-3.5" />
+            <ShoppingBag className="h-4 w-4" />
             <span>{added ? "Added to Box!" : `Add to Box — ${formatPrice(product.price * quantity)}`}</span>
           </button>
         </div>

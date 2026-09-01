@@ -204,59 +204,67 @@ function BlogPage() {
 
       {/* Recipe Modal */}
       {selectedPost && (
-        <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="recipe-modal-title"
+          className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4"
+        >
+          {/* High-Contrast Backdrop */}
           <div
             onClick={() => setSelectedPost(null)}
-            className="fixed inset-0 bg-ink/60 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+            aria-hidden="true"
           />
 
-          <div className="relative bg-paper border border-ink/20 shadow-2xl max-w-2xl w-full rounded-sm overflow-hidden z-10 my-8 animate-in zoom-in-95 duration-200">
-            <div className="p-6 border-b border-ink/10 flex items-center justify-between bg-cream/70">
+          <div className="relative bg-white border-2 border-slate-300 shadow-2xl max-w-2xl w-full rounded-md overflow-hidden z-10 my-8 animate-in zoom-in-95 duration-200">
+            <div className="px-6 py-4 border-b-2 border-slate-200 flex items-center justify-between bg-[#f7f4ee]">
               <div className="flex items-center gap-2">
-                <Flame className="h-4 w-4 text-brand" />
-                <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
+                <Flame className="h-5 w-5 text-brand" />
+                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-brand">
                   Butcher Master Recipe
                 </span>
               </div>
               <button
                 onClick={() => setSelectedPost(null)}
-                className="p-1.5 text-ink/50 hover:text-ink transition-colors rounded-full hover:bg-ink/5"
+                aria-label="Close recipe dialog"
+                className="p-1.5 text-slate-700 hover:text-black transition-colors rounded-full hover:bg-slate-200 cursor-pointer"
               >
-                <X className="h-4 w-4" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="p-6 max-h-[75vh] overflow-y-auto space-y-6">
+            <div className="p-6 max-h-[75vh] overflow-y-auto space-y-6 bg-white">
               <div>
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-ink leading-tight">
+                <h3 id="recipe-modal-title" className="font-display text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">
                   {selectedPost.title}
                 </h3>
-                <div className="mt-3 flex items-center gap-4 text-xs text-ink/70">
-                  <span className="flex items-center gap-1 font-semibold">
-                    <Clock className="h-3.5 w-3.5 text-brand" /> {selectedPost.time}
+                <div className="mt-3 flex items-center gap-4 text-xs sm:text-sm text-slate-800">
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <Clock className="h-4 w-4 text-brand" /> {selectedPost.time}
                   </span>
-                  <span className="flex items-center gap-1 font-semibold">
-                    <Users className="h-3.5 w-3.5 text-brand" /> {selectedPost.serves}
+                  <span className="flex items-center gap-1.5 font-bold">
+                    <Users className="h-4 w-4 text-brand" /> {selectedPost.serves}
                   </span>
                 </div>
               </div>
 
               {/* Recommended Cut Card */}
-              <div className="p-4 bg-sand/60 border border-ink/15 rounded flex items-center justify-between gap-4">
+              <div className="p-4 bg-[#f7f4ee] border-2 border-slate-200 rounded-md flex items-center justify-between gap-4 shadow-xs">
                 <div className="flex items-center gap-3">
                   <img
                     src={selectedPost.cutImage}
                     alt={selectedPost.cutRecommended}
-                    className="w-14 h-14 object-cover rounded border border-ink/10"
+                    className="w-16 h-16 object-cover rounded-md border-2 border-slate-200 shadow-xs"
                   />
                   <div>
-                    <span className="text-[9px] uppercase tracking-wider font-bold text-brand block">
+                    <span className="text-[10px] uppercase tracking-wider font-extrabold text-brand block">
                       Recommended Cut
                     </span>
-                    <h5 className="font-display text-sm font-semibold text-ink">
+                    <h5 className="font-display text-base font-bold text-slate-900">
                       {selectedPost.cutRecommended}
                     </h5>
-                    <p className="text-xs text-brand font-bold">
+                    <p className="text-sm text-brand font-extrabold">
                       {formatPrice(selectedPost.cutPrice)}
                     </p>
                   </div>
@@ -274,20 +282,20 @@ function BlogPage() {
                     });
                     setSelectedPost(null);
                   }}
-                  className="px-4 py-2 text-[10px] font-bold uppercase tracking-wider bg-brand text-brand-foreground hover:bg-ink transition-colors rounded shrink-0 flex items-center gap-1.5 cursor-pointer"
+                  className="px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider bg-brand text-white hover:bg-ink transition-colors rounded shadow-xs shrink-0 flex items-center gap-1.5 cursor-pointer"
                 >
-                  <ShoppingBag className="h-3 w-3" />
+                  <ShoppingBag className="h-4 w-4" />
                   <span>Add Cut</span>
                 </button>
               </div>
 
               {/* Ingredients */}
-              <div className="space-y-2">
-                <h4 className="font-display text-lg font-bold text-ink">Ingredients</h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-ink/80">
+              <div className="space-y-2.5">
+                <h4 className="font-display text-lg font-bold text-slate-900">Ingredients</h4>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-800 font-medium">
                   {selectedPost.ingredients.map((ing, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-brand shrink-0 mt-1.5" />
+                      <span className="h-2 w-2 rounded-full bg-brand shrink-0 mt-1.5" />
                       <span>{ing}</span>
                     </li>
                   ))}
@@ -296,11 +304,11 @@ function BlogPage() {
 
               {/* Steps */}
               <div className="space-y-3">
-                <h4 className="font-display text-lg font-bold text-ink">Butcher Step-by-Step</h4>
-                <ol className="space-y-3 text-xs sm:text-sm text-ink/80 leading-relaxed">
+                <h4 className="font-display text-lg font-bold text-slate-900">Butcher Step-by-Step</h4>
+                <ol className="space-y-3 text-xs sm:text-sm text-slate-800 leading-relaxed font-medium">
                   {selectedPost.steps.map((st, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <span className="font-bold text-brand font-mono text-xs shrink-0 mt-0.5">
+                      <span className="font-extrabold text-brand font-mono text-sm shrink-0 mt-0.5">
                         {idx + 1}.
                       </span>
                       <span>{st}</span>
@@ -310,18 +318,18 @@ function BlogPage() {
               </div>
 
               {/* Butcher Secret */}
-              <div className="p-4 bg-cream border-l-4 border-brand text-xs text-ink/80 italic">
-                <span className="font-bold not-italic text-brand block mb-1">
+              <div className="p-4 bg-red-50/70 border-l-4 border-brand text-xs sm:text-sm text-slate-900 font-medium rounded-r-md">
+                <span className="font-extrabold not-italic text-brand block mb-1">
                   💡 Blockman's Secret:
                 </span>
                 "{selectedPost.butcherSecret}"
               </div>
             </div>
 
-            <div className="p-4 border-t border-ink/10 bg-cream/70 text-right">
+            <div className="p-4 border-t-2 border-slate-200 bg-[#f7f4ee] text-right">
               <button
                 onClick={() => setSelectedPost(null)}
-                className="px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] bg-ink text-white hover:bg-brand transition-colors rounded-sm"
+                className="px-6 py-2.5 text-xs font-bold uppercase tracking-[0.16em] bg-slate-900 text-white hover:bg-brand transition-colors rounded-sm cursor-pointer"
               >
                 Close
               </button>

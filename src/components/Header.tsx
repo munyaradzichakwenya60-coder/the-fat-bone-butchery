@@ -133,13 +133,14 @@ export function Header() {
             {/* Backdrop */}
             <div
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute inset-0 bg-ink/60 backdrop-blur-sm animate-in fade-in duration-200"
+              className="absolute inset-0 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+              aria-hidden="true"
             />
 
             {/* Drawer Content */}
-            <div className="relative bg-paper border-b border-ink/15 shadow-2xl p-6 space-y-6 animate-in slide-in-from-top-4 duration-200">
+            <div className="relative bg-white border-b-2 border-slate-300 shadow-2xl p-6 space-y-6 animate-in slide-in-from-top-4 duration-200">
               <div className="space-y-1">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand block mb-2">
+                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-brand block mb-3">
                   Navigation
                 </span>
                 {NAV_LINKS.map((item) => {
@@ -149,35 +150,35 @@ export function Header() {
                       key={item.name}
                       to={item.to}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className={`flex items-center justify-between py-3 px-3 rounded text-sm font-semibold uppercase tracking-[0.16em] transition-colors ${
+                      className={`flex items-center justify-between py-3.5 px-4 rounded-md text-sm font-bold uppercase tracking-[0.16em] transition-colors ${
                         isActive
-                          ? "bg-brand/10 text-brand font-bold"
-                          : "text-ink hover:bg-sand/60 hover:text-brand"
+                          ? "bg-red-50 text-brand border-2 border-brand"
+                          : "text-slate-900 hover:bg-slate-100 hover:text-brand"
                       }`}
                     >
                       <span>{item.name}</span>
-                      <ArrowRight className="h-4 w-4 opacity-50" />
+                      <ArrowRight className="h-4 w-4 opacity-70" />
                     </Link>
                   );
                 })}
               </div>
 
               {/* Quick Details & Currency in Mobile Menu */}
-              <div className="pt-4 border-t border-ink/10 flex items-center justify-between text-xs">
+              <div className="pt-4 border-t-2 border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="text-ink/60">Currency:</span>
+                  <span className="text-slate-700 font-bold">Currency:</span>
                   <button
                     onClick={toggleCurrency}
-                    className="font-bold text-brand uppercase tracking-wider px-2.5 py-1 rounded bg-sand border border-ink/15"
+                    className="font-extrabold text-brand uppercase tracking-wider px-3 py-1.5 rounded-md bg-[#f7f4ee] border-2 border-slate-300 cursor-pointer"
                   >
                     {currency} (Tap to Switch)
                   </button>
                 </div>
                 <a
                   href="tel:+263712851525"
-                  className="font-bold text-brand text-xs hover:underline"
+                  className="font-extrabold text-brand text-xs hover:underline flex items-center gap-1.5"
                 >
-                  +263 712 851 525
+                  <span>📞</span> +263 712 851 525
                 </a>
               </div>
             </div>
