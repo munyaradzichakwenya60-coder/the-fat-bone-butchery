@@ -1,6 +1,9 @@
+import React, { useState, useMemo } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { useCart } from "@/lib/cart-context";
+import { ProductOptionsModal, SelectedProduct } from "@/components/ProductOptionsModal";
 
 import pRibeye from "@/assets/p-ribeye.jpg";
 import pStrip from "@/assets/p-strip.jpg";
@@ -17,23 +20,97 @@ export const Route = createFileRoute("/products")({
       {
         name: "description",
         content:
-          "Explore fresh beef cuts, farm chicken, ground mince, traditional boerewors, and curated meat boxes at The Fat Bone Butchery.",
+          "Explore fresh beef cuts, farm chicken, ground mince, traditional boerewors, and curated meat boxes at The Fat Bone Butchery, Bulawayo.",
       },
     ],
   }),
   component: ProductsPage,
 });
 
-const PRODUCTS = [
-  { img: pRibeye, name: "Prime Aged T-Bone Steak (~8oz)", price: "$26.00", was: null, tag: "Butcher Choice" },
-  { img: pStrip, name: "New York Strip / Sirloin Cut", price: "$32.00", was: null, tag: null },
-  { img: pMince, name: "Fresh Ground Beef Chuck Mince (~1.5lb)", price: "$18.00", was: null, tag: null },
-  { img: pFilet, name: "Selected Filet Mignon & Tenderloin", price: "$41.00", was: "$52.00", tag: "Sale" },
-  { img: boxRegular, name: "Family Weekly Meat Hamper", price: "$45.00", was: null, tag: "Top Value" },
-  { img: boxLarge, name: "Ultimate Weekend Braai Hamper", price: "$68.00", was: null, tag: "Braai Pack" },
-  { img: boxPremium, name: "Diaspora Bulawayo Monthly Box", price: "$115.00", was: null, tag: "Diaspora" },
-  { img: pRibeye, name: "Traditional Champion Boerewors (1kg)", price: "$14.00", was: null, tag: "Traditional" },
+const ALL_PRODUCTS = [
+  {
+    id: "t-bone",
+    category: "Steaks",
+    img: pRibeye,
+    name: "Prime Aged T-Bone Steak (~500g)",
+    price: 26.0,
+    was: null,
+    tag: "Butcher Choice",
+    options: ["Thick Braai Cut (1.5 inch)", "Standard Cut (1 inch)", "2x 250g Portions"],
+  },
+  {
+    id: "ny-strip",
+    category: "Steaks",
+    img: pStrip,
+    name: "New York Strip / Sirloin Steak",
+    price: 32.0,
+    was: null,
+    tag: null,
+    options: ["Standard Cut", "Thick Braai Cut", "Minute Steaks (Thin)"],
+  },
+  {
+    id: "beef-mince",
+    category: "Mince & Stew",
+    img: pMince,
+    name: "Fresh Ground Beef Chuck Mince (~1.5lb)",
+    price: 18.0,
+    was: null,
+    tag: null,
+    options: ["Fine Mince (Lean)", "Coarse Grind Mince", "500g Separate Bags"],
+  },
+  {
+    id: "filet-mignon",
+    category: "Steaks",
+    img: pFilet,
+    name: "Selected Filet Mignon & Tenderloin",
+    price: 41.0,
+    was: "$52.00",
+    tag: "Sale",
+    options: ["Center-Cut Medallions", "Chateaubriand Roast", "Butterflied Steaks"],
+  },
+  {
+    id: "boerewors",
+    category: "Boerewors",
+    img: pRibeye,
+    name: "Traditional Bulawayo Beef Boerewors (1kg)",
+    price: 14.0,
+    was: null,
+    tag: "Traditional",
+    options: ["Classic Spiced Coil", "Thick Braai Wheels", "Mild Garlic & Coriander"],
+  },
+  {
+    id: "box-regular",
+    category: "Hampers",
+    img: boxRegular,
+    name: "Family Weekly Meat Hamper (6–8 lbs)",
+    price: 45.0,
+    was: null,
+    tag: "Top Value",
+    options: ["Mixed Selection (Beef + Chicken)", "All Beef Box", "Stew & Mince Box"],
+  },
+  {
+    id: "box-large",
+    category: "Hampers",
+    img: boxLarge,
+    name: "Ultimate Weekend Braai Hamper (12–16 lbs)",
+    price: 68.0,
+    was: null,
+    tag: "Braai Pack",
+    options: ["Braai Meat & Boerewors Pack", "Steaks & Ribs Hamper", "Custom Cutting"],
+  },
+  {
+    id: "box-premium",
+    category: "Hampers",
+    img: boxPremium,
+    name: "Diaspora Bulawayo Monthly Box (22–28 lbs)",
+    price: 115.0,
+    was: null,
+    tag: "Diaspora Favorite",
+    options: ["Delivered to Family in Bulawayo", "Vacuum Sealed 1kg Packs", "Assorted Prime Cuts"],
+  },
 ];
+
+const CATEGORIES = ["All Cuts", "Steaks", "Mince & Stew", "Boerewors", "Hampers"];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
@@ -46,28 +123,54 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 function ProductsPage() {
+  const { formatPrice } = useCart();
+  const [selectedCategory, setSelectedCategory] = useState("All Cuts");
+  const [selectedProduct, setSelectedProduct] = useState<SelectedProduct | null>(null);
+
+  const filteredProducts = useMemo(() => {
+    if (selectedCategory === "All Cuts") return ALL_PRODUCTS;
+    return ALL_PRODUCTS.filter((p) => p.category === selectedCategory);
+  }, [selectedCategory]);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
 
       {/* Header Banner */}
-      <section className="bg-cream py-16 border-b border-border text-center">
+      <section className="bg-cream py-16 sm:py-20 border-b border-border text-center">
         <div className="mx-auto max-w-4xl px-6">
           <Eyebrow>OUR BUTCHER SELECTION</Eyebrow>
           <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold">
             Fresh Meat Cuts & Boxes
           </h1>
-          <p className="mt-3 text-sm text-muted-foreground max-w-xl mx-auto">
-            High grade meat with great taste for every meal. Hand-selected and prepared daily at 129 Fort Street, Bulawayo.
+          <p className="mt-3 text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            High grade meat with great taste for every meal. Hand-selected, aged, and prepared daily at 129 Fort Street, Bulawayo.
           </p>
+
+          {/* Category Filter Pills */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-[0.14em] transition-all cursor-pointer ${
+                  selectedCategory === cat
+                    ? "bg-brand text-brand-foreground shadow-sm"
+                    : "bg-white text-ink/75 hover:bg-sand border border-ink/10"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="mx-auto max-w-7xl px-6 py-20">
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {PRODUCTS.map((p) => (
-            <article key={p.name} className="group flex flex-col justify-between">
+          {filteredProducts.map((p) => (
+            <article key={p.id} className="group flex flex-col justify-between bg-white border border-ink/10 p-4 rounded-sm shadow-xs hover:shadow-md transition-shadow">
               <div className="relative overflow-hidden bg-secondary">
                 {p.tag && (
                   <span className="absolute right-3 top-3 z-10 bg-brand px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-foreground">
@@ -83,25 +186,37 @@ function ProductsPage() {
                   className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
+
               <div className="pt-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-display text-base leading-snug">{p.name}</h3>
+                  <span className="text-[9px] uppercase tracking-wider font-bold text-brand block mb-1">
+                    {p.category}
+                  </span>
+                  <h3 className="font-display text-base font-semibold leading-snug">{p.name}</h3>
                   <p className="mt-2 text-sm">
                     {p.was && (
                       <span className="mr-2 text-muted-foreground line-through">{p.was}</span>
                     )}
-                    <span className="font-semibold text-brand">{p.price}</span>
+                    <span className="font-bold text-brand">{formatPrice(p.price)}</span>
                   </p>
                 </div>
-                <div className="mt-4">
-                  <a
-                    href="https://wa.me/263712851525?text=Hello%20The%20Fat%20Bone%20Butchery,%20I%20would%20like%20to%20order"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center bg-brand px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-foreground hover:bg-ink transition-colors"
+
+                <div className="mt-5">
+                  <button
+                    onClick={() =>
+                      setSelectedProduct({
+                        id: p.id,
+                        name: p.name,
+                        price: p.price,
+                        image: p.img,
+                        tag: p.tag,
+                        options: p.options,
+                      })
+                    }
+                    className="inline-flex w-full items-center justify-center bg-brand px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.18em] text-brand-foreground hover:bg-ink transition-colors cursor-pointer"
                   >
-                    Order via WhatsApp
-                  </a>
+                    Select Options & Add
+                  </button>
                 </div>
               </div>
             </article>
@@ -110,6 +225,12 @@ function ProductsPage() {
       </section>
 
       <Footer />
+
+      {/* Product Options Modal */}
+      <ProductOptionsModal
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
     </div>
   );
 }

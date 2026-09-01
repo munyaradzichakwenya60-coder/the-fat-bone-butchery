@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import React from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ShieldCheck, HeartHandshake, Award, MapPin, ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BrushImage } from "@/components/BrushImage";
@@ -24,9 +26,27 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+const VALUES = [
+  {
+    icon: ShieldCheck,
+    title: "100% Pasture-Raised & Grass-Fed",
+    desc: "We exclusively source livestock raised on open Matabeleland and Zimbabwean grasslands without synthetic hormones, routine antibiotics, or feedlot fillers.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Artisanal Whole-Carcass Butchery",
+    desc: "Our master blockmen practice whole-carcass butchery, honoring the entire animal and preparing custom cuts to your exact thickness and culinary needs.",
+  },
+  {
+    icon: Award,
+    title: "Cold-Chain Integrity",
+    desc: "From dry-aging in temperature-controlled cold rooms to vacuum-sealed insulated delivery packaging, our meats never sit frozen — guaranteed fresh.",
+  },
+];
+
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 justify-center">
       <span className="h-px w-6 bg-brand/40" />
       <span className="eyebrow">{children}</span>
       <span className="h-px w-6 bg-brand/40" />
@@ -40,16 +60,16 @@ function AboutPage() {
       <Header />
 
       {/* Hero Banner */}
-      <section className="bg-cream py-16 lg:py-24 border-b border-border">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <Eyebrow>OUR STORY</Eyebrow>
-          <h1 className="mt-4 font-display text-4xl sm:text-5xl font-bold leading-tight">
+      <section className="bg-cream py-16 sm:py-24 border-b border-border text-center">
+        <div className="mx-auto max-w-4xl px-6">
+          <Eyebrow>OUR STORY & HERITAGE</Eyebrow>
+          <h1 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
             Born From The Bone,
             <br />
             Cut With Care
           </h1>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Located at 129 Fort Street (between 13th & 14th Avenue) in Bulawayo, The Fat Bone Butchery was founded on an uncompromising commitment to honest cuts, deep flavor, and high-grade quality meats.
+            Located at <strong>129 Fort Street</strong> (between 13th & 14th Avenue) in Bulawayo, The Fat Bone Butchery was founded on an uncompromising commitment to honest cuts, deep flavor, and high-grade quality meats.
           </p>
         </div>
       </section>
@@ -79,8 +99,17 @@ function AboutPage() {
               Animal welfare and traditional butchery craftsmanship.
             </p>
             <p className="mt-4 text-xs sm:text-sm leading-relaxed text-[#555e6d]">
-              We partner directly with local Matabeleland farms committed to natural grazing and ethical husbandry. Every carcass is chilled in strict cold-chain conditions, aged properly, and cut to order with master knife work.
+              We partner directly with local farms committed to natural grazing and ethical husbandry. Every carcass is chilled in strict cold-chain conditions, aged properly, and cut to order with master knife work.
             </p>
+            <div className="mt-6">
+              <Link
+                to="/products"
+                className="inline-flex items-center gap-2 px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] bg-brand text-brand-foreground hover:bg-ink transition-colors"
+              >
+                <span>Explore Cuts</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
           </div>
 
           <div className="w-full flex-1 min-w-0 h-[320px] lg:h-[420px]">
@@ -94,17 +123,73 @@ function AboutPage() {
         </div>
       </section>
 
+      {/* Core Values */}
+      <section className="bg-sand/60 py-20 border-y border-ink/10">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center max-w-xl mx-auto mb-14">
+            <Eyebrow>OUR PILLARS</Eyebrow>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold">The Fat Bone Standard</h2>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {VALUES.map((val) => {
+              const Icon = val.icon;
+              return (
+                <div key={val.title} className="bg-white p-8 border border-ink/10 rounded-sm shadow-xs space-y-4">
+                  <div className="h-12 w-12 rounded-full bg-brand/10 text-brand flex items-center justify-center">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-ink">{val.title}</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{val.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Gallery Section */}
-      <section className="bg-sand py-20">
+      <section className="bg-paper py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center max-w-xl mx-auto mb-12">
             <Eyebrow>BEHIND THE BLOCK</Eyebrow>
             <h2 className="mt-3 font-display text-3xl font-bold">Artisan Butchery in Bulawayo</h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-3 items-center">
-            <img src={g1} alt="Beef ribs hanging in butchery" className="h-72 w-full object-cover shadow-sm" />
-            <img src={g2} alt="Cold locker dry aging" className="h-84 w-full object-cover shadow-sm sm:-mt-4 sm:-mb-4" />
-            <img src={g3} alt="Master butcher wrapping cuts" className="h-72 w-full object-cover shadow-sm" />
+            <div className="overflow-hidden bg-slate-100 shadow-sm rounded-sm">
+              <img src={g1} alt="Beef ribs hanging in butchery" className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105" />
+            </div>
+            <div className="overflow-hidden bg-slate-100 shadow-sm sm:-mt-4 sm:-mb-4 rounded-sm">
+              <img src={g2} alt="Cold locker dry aging" className="h-84 w-full object-cover transition-transform duration-500 hover:scale-105" />
+            </div>
+            <div className="overflow-hidden bg-slate-100 shadow-sm rounded-sm">
+              <img src={g3} alt="Master butcher wrapping cuts" className="h-72 w-full object-cover transition-transform duration-500 hover:scale-105" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Visit Us CTA Banner */}
+      <section className="bg-brand py-16 text-brand-foreground text-center">
+        <div className="mx-auto max-w-3xl px-6 space-y-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold">Visit Our Counter on Fort Street</h2>
+          <p className="text-sm text-brand-foreground/80 max-w-xl mx-auto leading-relaxed">
+            129 Fort Street, between 13th & 14th Avenue, Bulawayo. Open 7 days a week.
+          </p>
+          <div className="pt-4 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.18em] bg-white text-ink hover:bg-cream transition-colors"
+            >
+              <MapPin className="h-4 w-4 text-brand" />
+              <span>Get Directions & Hours</span>
+            </Link>
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 px-7 py-3 text-[11px] font-bold uppercase tracking-[0.18em] border border-white text-white hover:bg-white/10 transition-colors"
+            >
+              <span>Order Meat Hamper</span>
+            </Link>
           </div>
         </div>
       </section>
