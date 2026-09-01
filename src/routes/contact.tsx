@@ -7,11 +7,11 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us & Location — The Fat Bone Butchery | Bulawayo" },
+      { title: "Contact Us & Location — The Copper Cleaver Butchery | Bulawayo" },
       {
         name: "description",
         content:
-          "Visit The Fat Bone Butchery at 129 Fort Street (btwn 13th & 14th Ave), Bulawayo. Call / WhatsApp +263 712 851 525.",
+          "Visit The Copper Cleaver Butchery at 129 Fort Street (btwn 13th & 14th Ave), Bulawayo. Call / WhatsApp +263 712 851 525.",
       },
     ],
   }),
@@ -92,7 +92,7 @@ function ContactPage() {
           <div className="space-y-8">
             <div>
               <h2 className="font-display text-2xl sm:text-3xl font-bold">
-                The Fat Bone Butchery
+                The Copper Cleaver Butchery
               </h2>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 High grade meat with great taste for every meal. Born from the bone, cut with care.
@@ -135,7 +135,7 @@ function ContactPage() {
                   <h3 className="font-bold uppercase tracking-wider text-xs">WhatsApp Lines</h3>
                   <div className="mt-1 flex flex-wrap gap-2">
                     <a
-                      href="https://wa.me/263712851525?text=Hello%20The%20Fat%20Bone%20Butchery,%20I%20would%20like%20to%20order"
+                      href="https://wa.me/263712851525?text=Hello%20The%20Copper%20Cleaver%20Butchery,%20I%20would%20like%20to%20order"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded text-xs font-semibold transition-colors"
@@ -144,7 +144,7 @@ function ContactPage() {
                       <span>Local (+263 712 851 525)</span>
                     </a>
                     <a
-                      href="https://wa.me/447762068799?text=Hello%20The%20Fat%20Bone%20Butchery,%20I%20am%20ordering%20from%20Diaspora"
+                      href="https://wa.me/447762068799?text=Hello%20The%20Copper%20Cleaver%20Butchery,%20I%20am%20ordering%20from%20Diaspora"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-700 hover:bg-blue-800 text-white rounded text-xs font-semibold transition-colors"
@@ -248,7 +248,7 @@ function ContactPage() {
                   className="w-full bg-brand py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-foreground hover:bg-ink transition-colors flex items-center justify-center gap-2 cursor-pointer rounded"
                 >
                   <Send className="h-3.5 w-3.5" />
-                  <span>Send Message to The Fat Bone</span>
+                  <span>Send Message to The Copper Cleaver</span>
                 </button>
               </form>
             )}

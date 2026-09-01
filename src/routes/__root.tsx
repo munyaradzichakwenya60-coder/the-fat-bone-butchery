@@ -75,14 +75,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
+      { title: "The Copper Cleaver Butchery — Honest Cuts. Deep Flavor." },
       {
         name: "description",
         content:
-          "The Fat Bone Butchery. High-grade meat butchered to order and delivered fresh. 129 Fort Street, Bulawayo.",
+          "The Copper Cleaver Butchery. High-grade meat butchered to order and delivered fresh. 129 Fort Street, Bulawayo.",
       },
-      { name: "author", content: "The Fat Bone Butchery" },
-      { property: "og:title", content: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
+      { name: "author", content: "The Copper Cleaver Butchery" },
+      { property: "og:title", content: "The Copper Cleaver Butchery — Honest Cuts. Deep Flavor." },
       {
         property: "og:description",
         content:
@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/icon.svg" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@FatBoneButchery" },
+      { name: "twitter:site", content: "@CopperCleaver" },
       { name: "twitter:image", content: "/icon.svg" },
     ],
     links: [

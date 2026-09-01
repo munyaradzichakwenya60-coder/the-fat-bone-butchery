@@ -9,7 +9,7 @@ interface ReferralModalProps {
 
 export function ReferralModal({ isOpen, onClose, initialEmail = "" }: ReferralModalProps) {
   const [copied, setCopied] = useState(false);
-  const referralCode = "FATBONE20";
+  const referralCode = "CLEAVER20";
   const referralUrl = `https://assemble-beauty.vercel.app/?ref=${referralCode}`;
 
   if (!isOpen) return null;
@@ -83,7 +83,7 @@ export function ReferralModal({ isOpen, onClose, initialEmail = "" }: ReferralMo
 
           <div className="pt-2 flex justify-center gap-3">
             <a
-              href={`https://wa.me/?text=${encodeURIComponent(`Hey! Get $20 off your first grass-fed meat box from The Fat Bone Butchery in Bulawayo using my link: ${referralUrl}`)}`}
+              href={`https://wa.me/?text=${encodeURIComponent(`Hey! Get $20 off your first grass-fed meat box from The Copper Cleaver Butchery in Bulawayo using my link: ${referralUrl}`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold bg-emerald-700 hover:bg-emerald-800 text-white rounded transition-colors shadow-sm"

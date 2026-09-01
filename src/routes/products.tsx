@@ -16,11 +16,11 @@ import boxPremium from "@/assets/box-premium.jpg";
 export const Route = createFileRoute("/products")({
   head: () => ({
     meta: [
-      { title: "Products & Cuts — The Fat Bone Butchery | Bulawayo" },
+      { title: "Products & Cuts — The Copper Cleaver Butchery | Bulawayo" },
       {
         name: "description",
         content:
-          "Explore fresh beef cuts, farm chicken, ground mince, traditional boerewors, and curated meat boxes at The Fat Bone Butchery, Bulawayo.",
+          "Explore fresh beef cuts, farm chicken, ground mince, traditional boerewors, and curated meat boxes at The Copper Cleaver Butchery, Bulawayo.",
       },
     ],
   }),

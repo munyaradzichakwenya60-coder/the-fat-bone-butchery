@@ -14,7 +14,7 @@ export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
       }`}
     >
       <span className="text-[8px] uppercase tracking-[0.3em] opacity-70">129 Fort St · Bulawayo</span>
-      <span className="font-display text-lg sm:text-xl font-bold tracking-wide">THE FAT BONE</span>
+      <span className="font-display text-lg sm:text-xl font-bold tracking-wide">THE COPPER CLEAVER</span>
       <span className="mt-0.5 text-[8.5px] uppercase tracking-[0.3em] text-brand font-semibold">✕ Butchery ✕</span>
     </Link>
   );

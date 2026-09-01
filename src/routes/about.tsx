@@ -15,11 +15,11 @@ import g3 from "@/assets/g3.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — The Fat Bone Butchery | Bulawayo" },
+      { title: "About Us — The Copper Cleaver Butchery | Bulawayo" },
       {
         name: "description",
         content:
-          "Learn about The Fat Bone Butchery at 129 Fort Street, Bulawayo. Born from the bone, cut with care.",
+          "Learn about The Copper Cleaver Butchery at 129 Fort Street, Bulawayo. Born from the bone, cut with care.",
       },
     ],
   }),
@@ -69,7 +69,7 @@ function AboutPage() {
             Cut With Care
           </h1>
           <p className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Located at <strong>129 Fort Street</strong> (between 13th & 14th Avenue) in Bulawayo, The Fat Bone Butchery was founded on an uncompromising commitment to honest cuts, deep flavor, and high-grade quality meats.
+            Located at <strong>129 Fort Street</strong> (between 13th & 14th Avenue) in Bulawayo, The Copper Cleaver Butchery was founded on an uncompromising commitment to honest cuts, deep flavor, and high-grade quality meats.
           </p>
         </div>
       </section>
@@ -128,7 +128,7 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center max-w-xl mx-auto mb-14">
             <Eyebrow>OUR PILLARS</Eyebrow>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold">The Fat Bone Standard</h2>
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold">The Copper Cleaver Standard</h2>
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">

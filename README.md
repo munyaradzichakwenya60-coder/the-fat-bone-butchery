@@ -1,9 +1,9 @@
-# The Fat Bone Butchery
+# The Copper Cleaver Butchery
 
 > **Honest Cuts. Deep Flavor.**
 > Born from the Bone, Cut with Care.
 
-Official website for **The Fat Bone Butchery**, located at **129 Fort Street (between 13th & 14th Avenue), Bulawayo, Zimbabwe**.
+Official website for **The Copper Cleaver Butchery**, located at **129 Fort Street (between 13th & 14th Avenue), Bulawayo, Zimbabwe**.
 
 ## Features
 

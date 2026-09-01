@@ -165,7 +165,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const getWhatsAppUrl = () => {
     const phone = deliveryType === "diaspora" ? UK_WHATSAPP : LOCAL_WHATSAPP;
     const lines: string[] = [];
-    lines.push("🥩 *ORDER — THE FAT BONE BUTCHERY* 🥩");
+    lines.push("🥩 *ORDER — THE COPPER CLEAVER BUTCHERY* 🥩");
     lines.push("📍 129 Fort Street, Bulawayo\n");
     
     lines.push("📋 *ITEMS:*");

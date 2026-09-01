@@ -15,11 +15,11 @@ import pFilet from "@/assets/p-filet.jpg";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog & Butcher Recipes — The Fat Bone Butchery" },
+      { title: "Blog & Butcher Recipes — The Copper Cleaver Butchery" },
       {
         name: "description",
         content:
-          "Cooking guides, braai techniques, and recipes from the master butchers at The Fat Bone Butchery, Bulawayo.",
+          "Cooking guides, braai techniques, and recipes from the master butchers at The Copper Cleaver Butchery, Bulawayo.",
       },
     ],
   }),
@@ -56,7 +56,7 @@ const POSTS: RecipePost[] = [
     excerpt:
       "Why medium-hot coals and zero piercing are the golden rules for juicy, flavor-bursting traditional boerewors.",
     ingredients: [
-      "1kg The Fat Bone Traditional Boerewors",
+      "1kg The Copper Cleaver Traditional Boerewors",
       "Fresh hot braai coals (camelthorn or mopane)",
       "Coarse salt and fresh ground black pepper",
       "Traditional sadza or crusty rolls to serve",
@@ -67,7 +67,7 @@ const POSTS: RecipePost[] = [
       "Turn carefully using tongs every 3–4 minutes until both sides develop a deep caramel brown crust.",
       "Rest the sausage for 3 minutes before slicing to allow the spices and juices to settle.",
     ],
-    butcherSecret: "At The Fat Bone, we use a 80/20 lean-to-fat ratio with whole coriander seeds roasted in-house.",
+    butcherSecret: "At The Copper Cleaver, we use a 80/20 lean-to-fat ratio with whole coriander seeds roasted in-house.",
   },
   {
     id: "braised-oxtail",
@@ -82,7 +82,7 @@ const POSTS: RecipePost[] = [
     excerpt:
       "Layering root vegetables, rich red wine reduction, and thick marrow cuts for melt-in-the-mouth winter stews.",
     ingredients: [
-      "1.5kg The Fat Bone Oxtail & Beef Chuck",
+      "1.5kg The Copper Cleaver Oxtail & Beef Chuck",
       "2 large brown onions, roughly chopped",
       "4 cloves garlic and 2 sprigs fresh rosemary",
       "1 cup dry red wine and 500ml beef marrow stock",
@@ -110,7 +110,7 @@ const POSTS: RecipePost[] = [
     excerpt:
       "A butcher's breakdown of which cuts belong over low indirect heat first, followed by a screaming hot sear.",
     ingredients: [
-      "1x The Fat Bone 1.5-inch Thick-Cut T-Bone",
+      "1x The Copper Cleaver 1.5-inch Thick-Cut T-Bone",
       "2 tbsp clarified butter or beef tallow",
       "Flaky sea salt & coarse black pepper",
       "2 sprigs fresh thyme and 2 smashed garlic cloves",

@@ -36,13 +36,13 @@ import featRoundSteak from "@/assets/feat-round-steak.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
+      { title: "The Copper Cleaver Butchery — Honest Cuts. Deep Flavor." },
       {
         name: "description",
         content:
-          "Pasture-raised, high-grade meat butchered to order and delivered fresh. Build your box of grass-fed steaks, pork and poultry from The Fat Bone Butchery, Bulawayo.",
+          "Pasture-raised, high-grade meat butchered to order and delivered fresh. Build your box of grass-fed steaks, pork and poultry from The Copper Cleaver Butchery, Bulawayo.",
       },
-      { property: "og:title", content: "The Fat Bone Butchery — Honest Cuts. Deep Flavor." },
+      { property: "og:title", content: "The Copper Cleaver Butchery — Honest Cuts. Deep Flavor." },
       {
         property: "og:description",
         content:
@@ -294,7 +294,7 @@ function Index() {
           <div className="relative w-full">
             <img
               src={heroBanner}
-              alt="The Fat Bone Butchery — Fresh cuts from farm to table"
+              alt="The Copper Cleaver Butchery — Fresh cuts from farm to table"
               className="w-full h-auto object-cover sm:object-contain object-center block"
               loading="eager"
             />
@@ -786,7 +786,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex flex-wrap items-center justify-between gap-4 sm:gap-6">
             <div>
-              <h2 className="font-display text-xl sm:text-2xl font-bold">Share your #FatBone experience!</h2>
+              <h2 className="font-display text-xl sm:text-2xl font-bold">Share your #CopperCleaver experience!</h2>
               <p className="mt-1 sm:mt-2 max-w-xl text-xs sm:text-sm text-muted-foreground">
                 We are all about lifelong tastes, honest cuts, and deep flavor. Tag us and we might just
                 feature your cook.
@@ -806,7 +806,7 @@ function Index() {
               <img
                 key={i}
                 src={img}
-                alt="Customer cooking with The Fat Bone Butchery cuts"
+                alt="Customer cooking with The Copper Cleaver Butchery cuts"
                 width={700}
                 height={700}
                 loading="lazy"

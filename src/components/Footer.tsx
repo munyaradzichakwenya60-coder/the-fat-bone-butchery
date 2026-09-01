@@ -15,7 +15,7 @@ export function Footer() {
               { label: "About Us", to: "/about" },
               { label: "Our Farmers", to: "/about" },
               { label: "Our Butchers", to: "/about" },
-              { label: "The Fat Bone", to: "/" },
+              { label: "The Copper Cleaver", to: "/" },
             ],
           },
           {
@@ -30,7 +30,7 @@ export function Footer() {
           {
             title: "Need Assistance?",
             links: [
-              { label: "hello@fatbonebutchery.com", to: "/contact" },
+              { label: "hello@coppercleaver.com", to: "/contact" },
               { label: "129 Fort Street, Bulawayo", to: "/contact" },
               { label: "+263 712 851 525", to: "tel:+263712851525" },
             ],
@@ -51,7 +51,7 @@ export function Footer() {
         ))}
       </div>
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-6">
-        <p className="text-xs text-muted-foreground">© 2026 The Fat Bone Butchery. All rights reserved.</p>
+        <p className="text-xs text-muted-foreground">© 2026 The Copper Cleaver Butchery. All rights reserved.</p>
         <div className="flex items-center gap-4 text-muted-foreground">
           <Instagram className="h-4 w-4 hover:text-brand cursor-pointer transition-colors" />
           <Facebook className="h-4 w-4 hover:text-brand cursor-pointer transition-colors" />
